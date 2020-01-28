@@ -110,7 +110,7 @@ Write a program that creates a string that represents an 8×8 grid, using newlin
 characters to separate lines. At each position of the grid there is either a space
 or a "#" character. The characters should form a chessboard.
 Passing this string to console.log should show something like this:
-*/
+
 
 for(let number = 0; number <= 8; number++){
     let output = '';
@@ -121,3 +121,119 @@ for(let number = 0; number <= 8; number++){
     output = ' # # # #'
     console.log(output)
 }
+*/
+
+//page 39 functions
+
+let x = 10;
+if (true) {
+let y = 20;
+var z = 30;
+console.log(x + y + z);
+console.log(y)
+// → 60
+}
+// y is not visible here
+console.log(x + z );
+//console.log(y)
+
+// → 40
+console.log('the future says', future());
+
+function future(){
+    return 'you will nevr have flying cars'
+}
+
+function greet(who) {
+    console.log("Hello " + who);
+    }
+    greet("Harry");
+    greet('segun')
+    // console.log("Bye");
+
+function multiplier(factor) {
+    return number => number * factor;
+}
+
+let twice = multiplier(2);
+console.log(twice(5))
+console.log(multiplier(2))
+
+function findSolution(target) {
+    function find(current, history) {
+    if (current == target) {
+    return history;
+    } else if (current > target) {
+    return null;
+    } else {
+    return find(current + 5, `(${history} + 5)`) ||
+    find(current * 3, `(${history} * 3)`);
+    }
+    }
+    return find(1, "1");
+    }
+    console.log(findSolution(24));
+    // → (((1 * 3) + 5) * 3)
+
+    //page 51
+
+//     We want to write a program that prints two numbers: the numbers of cows
+// and chickens on a farm, with the words Cows and Chickens after them and zeros
+// padded before both numbers so that they are always three digits long.
+// 007 Cows
+// 011 Chickens
+
+// function printFarmInventory(cows, chickens, pigs){
+//     let cowString = String(cows);
+//     while(cowString.length < 3) {
+//         cowString = "0" + cowString;
+//     }
+//     console.log(`${cowString} Cows`);
+
+//     let chickenString = String(chickens);
+//     while(chickenString.length< 3) {
+//         chickenString= "0" + chickenString
+//     }
+//     console.log(`${chickenString} Chickens`)
+    
+//     let pigString = String(pigs);
+//     while(pigString.length< 3) {
+//         pigString= "0" + pigString
+//     }
+//     console.log(`${pigString} pigs`)
+
+// }
+// printFarmInventory(7, 11, 1)
+
+function printZeroPaddedWithLabel(number, label) {
+    let numberString = String(number);
+    while(numberString.length < 3) {
+        numberString = "0" + numberString;
+    }
+    console.log(`${numberString} ${label}`);
+}
+
+function printFarmInventory(cows, chickens, pigs) {
+    printZeroPaddedWithLabel(cows, 'cows');
+    printZeroPaddedWithLabel(chickens, 'chickens');
+    printZeroPaddedWithLabel(pigs, 'pigs');
+}
+
+printFarmInventory(1,2,6);
+
+
+function zeropad(number, width){
+    let string = String(number);
+    while(string.length < width) {
+        string = '0' + string;
+    }
+    return string;
+}
+
+function printFarmInventory(cows, chickens, pigs) {
+    console.log(`${zeropad(cows, 3)} Cows`)
+    console.log(`${zeropad(chickens, 3)} Chickens`)
+    console.log(`${zeropad(cows, 3)} pigs`)
+}
+
+printFarmInventory(1,1,1)

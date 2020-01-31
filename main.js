@@ -247,5 +247,36 @@ for(let i = 0;i < string.length; i++){
 }
  return counted
 }
-console.log(countchar('carcs', 'c'))
+function countB(string){
+    return countchar(string, 'b')
+}
 
+console.log(countB('beans'))
+
+console.log(countchar('cat', 'a'))
+
+// page 71 arrays
+
+//tried it with  a for(let item of element loop)
+
+function test(string, ch){
+    let counted = 0
+    for(let s of string) {
+        if (s == ch) {
+            counted += 1
+        }
+    }
+    return counted
+}
+ console.log(test('teeest','e'))
+
+let todoList = [];
+function remember(task) {
+    todoList.push(task);
+}
+function getTask() {
+ return todoList.shift();
+}
+function rememberUrgently(task) {
+    todoList.unshift(task)
+}

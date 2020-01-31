@@ -280,3 +280,51 @@ function getTask() {
 function rememberUrgently(task) {
     todoList.unshift(task)
 }
+
+//rest or spread params
+
+function max(...numbers){
+    let result = -Infinity;
+    for(let number of numbers){
+        if (number > result) result = number;
+    }
+    return result
+}
+console.log(max(4,1,9,-2))
+
+let word = ['never', 'fully'];
+console.log(['will',...word,'inses'])
+
+//excercise
+
+// function range(start, end) {
+//     let count = 0;
+//     for(let i = start; i<= end;i++){
+//         count +=1
+//     }
+//     return count
+// }
+
+// console.log(range(2,5))
+
+function rangeArr(start, end) {
+    let arr = [];
+    for(let i = start; i<= end;i++){
+        arr.push(i)
+    }
+    return arr
+}
+
+console.log(rangeArr(2,5))
+
+function sum(arr){
+    let total = 0
+ for(let a of arr) {
+    total +=a
+ }
+ return total
+}
+console.log(sum([1,5,2]))
+
+console.log(sum(rangeArr(1,10)))
+

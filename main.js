@@ -328,3 +328,68 @@ console.log(sum([1,5,2]))
 
 console.log(sum(rangeArr(1,10)))
 
+
+
+function rangeArrStep(start, end, step) {
+    let arr = [];
+    for(let i = start; i<= end;i+step || i++){
+        arr.push(i)
+    }
+    return arr
+}
+
+console.log(rangeArrStep(2,10))
+
+//79
+ 
+repeat = (n, action) => {
+    for (let i = 0; i < n; i++) {
+        action(i);
+    }
+}
+
+repeat(3, console.log)
+
+let labels = [];
+repeat(5, i => {
+    labels.push(`unit ${i + 1}`);
+});
+console.log(labels)
+
+// higher order function
+
+function greaterThan(n) {
+    return m => m > n;
+}
+
+let greaterThan10 = greaterThan(10);
+console.log(greaterThan10(1))
+
+function test(n) {
+    return m => m * n;
+}
+
+let test1 = test(2);
+console.log(test1(10))
+
+function noisy(f) {
+    return (...args) => {
+        console.log ('calling with', args);
+        let result = f(...args);
+        console.log('called with', args,', returned', result);
+        return result
+    }
+}
+
+noisy(Math.min) (3,2,1)
+
+function unless(test, then) {
+    if(!test) then();
+}
+
+repeat(3, n => {
+    unless(n % 2 == 1, () => {
+        console.log(n, 'is even')
+    })
+})
+

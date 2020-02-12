@@ -393,3 +393,117 @@ repeat(3, n => {
     })
 })
 
+let arrays = [[1, 2, 3], [4, 5], [6]];
+console.log(arrays.reduce((flat, current) => flat.concat(current), []));
+
+//higher order function
+
+var grades = [
+    {name: 'John', grade: 8, sex: 'M'},
+    {name: 'Sarah', grade: 12, sex: 'F'},
+    {name: 'Bob', grade: 16, sex: 'M'},
+    {name: 'Johnny', grade: 2, sex: 'M'},
+    {name: 'Ethan', grade: 4, sex: 'M'},
+    {name: 'Paula', grade: 18, sex: 'F'},
+    {name: 'Donald', grade: 5, sex: 'M'},
+    {name: 'Jennifer', grade: 13, sex: 'F'},
+    {name: 'Courtney', grade: 15, sex: 'F'},
+    {name: 'Jane', grade: 9, sex: 'F'}
+]
+
+/*
+The average grade of this classroom
+The average grade of the boys
+The average grade of the girls
+The higher note among the boys
+The higher note among the girls
+*/
+
+//average grade of the class
+const avgradeArr = grades.map(grades => grades.grade)
+
+const toAvgrade = avgradeArr.reduce(function (a, b) {
+    return a + b
+}, 10)
+
+function number() {
+    let count = 0 ;
+    for (obj of grades) {
+        count += 1
+    }
+    return count
+
+}
+console.log(number(grades))
+
+console.log(avgradeArr)
+console.log(toAvgrade)
+
+function avClGrade(a,b){
+    return a/b
+}
+
+console.log(avClGrade(toAvgrade, number()))
+
+//average graade of boys
+const boys = grades.filter(boys => boys.sex === 'M')
+function number2() {
+    let count = 0 ;
+    for (obj of boys) {
+        count += 1
+    }
+    return count
+
+}
+console.log(number(grades))
+
+const boysGrade = boys.map(boysGrade => boysGrade.grade)
+
+console.log(number2(boys))
+console.log(boys)
+console.log(boysGrade)
+
+const tolBoysGrade = boysGrade.reduce((a,b)=> (a+b))
+
+console.log(tolBoysGrade);
+
+console.log(avClGrade(tolBoysGrade,number2()));
+
+//The average grade of the girls
+
+const girls = grades.filter(girls => girls.sex == "F");
+console.log(girls)
+
+const girlsGrade = girls.map(girls => girls.grade)
+console.log(' girls grade :' +girlsGrade)
+
+const totalGirlsGrade = girlsGrade.reduce((a,b) => (a + b)) 
+
+console.log('total girls grade :' +totalGirlsGrade)
+
+function number3() {
+    count = 0
+    for(number of girls) {
+        count +=1
+    }
+    return count
+}
+console.log(number3())
+
+console.log('average girls :' +avClGrade(totalGirlsGrade, number3()))
+
+//The higher note among the boys
+
+console.log(boysGrade)
+console.log(typeof boysGrade)
+
+const biggest = boysGrade.map(biggest =>  biggest)
+
+console.log(Math.max(...boysGrade) + 'boys')
+
+// console.log(typeof biggest)
+// console.log(biggest + 'biggest')
+
+const maxGGrade= girlsGrade.reduce((a,b) => Math.max(a,b));
+
+console.log(maxGGrade + 'highest girl grade')

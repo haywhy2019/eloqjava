@@ -507,3 +507,41 @@ console.log(Math.max(...boysGrade) + 'boys')
 const maxGGrade= girlsGrade.reduce((a,b) => Math.max(a,b));
 
 console.log(maxGGrade + 'highest girl grade')
+
+//page 97
+
+//objects programming
+
+let rabbit = {};
+rabbit.speak = function(line) {
+    console.log(`the rabbit says '${line}'`)
+}
+
+rabbit.speak('i am alive')
+
+function speak(line) {
+    console.log(`the ${this.type} rabbit says '${line}'`)
+}
+
+let whiteRabbit = {type: 'white', speak};
+let hungryRabbit = {type: 'hungry', speak};
+
+whiteRabbit.speak('oh my ears and whiskers ' +
+ 'how its getting late');
+
+ hungryRabbit.speak('i am always hungry')
+
+ let empty = {};
+ console.log(empty.toString);
+
+ console.log(empty.toString());
+
+ console.log(Object.getPrototypeOf({}) == Object.prototype);
+
+ console.log(Object.getPrototypeOf(Object.prototype));
+
+ console.log(Object.getPrototypeOf(Math.max) == Function.prototype)
+
+ console.log(Object.getPrototypeOf([]) == Array.prototype)
+
+ 

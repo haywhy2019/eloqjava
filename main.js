@@ -544,4 +544,167 @@ whiteRabbit.speak('oh my ears and whiskers ' +
 
  console.log(Object.getPrototypeOf([]) == Array.prototype)
 
- 
+
+ // clases
+ class Car {
+     constructor(name, color, year) {
+         this.name = name;
+         this.color = color;
+         this.year = year;
+         this.number = 0;
+     }
+     login(){
+         console.log(this.name, 'just logged in');
+         return this;
+     };
+     logout(){
+         console.log(this.name, 'just logged out');
+         return this;
+     };
+     updateNumber() {
+         console.log(this.name, 'quantity is now', this.number)
+         this.number++
+         return this
+        
+     }
+ }
+
+ var car1 = new Car('toyota', 'black', '2004')
+ var car2 = new Car('toyota', 'red', '2006')
+ var car3 = new Car('toyota', 'pink', '2010')
+
+ console.log(car1)
+ console.log(car2)
+ console.log(car3)
+ console.log(car1.login().updateNumber().logout().updateNumber())
+
+ console.log()
+
+//  page 104
+
+let ages1 = {
+    Boris: 39,
+    Ling: 22,
+    Julia: 62
+};
+console.log(`julia is ${ages1['Julia']}`);
+console.log('is Boris age known?', "Boris" in ages1);
+console.log('is toStrings age kniown', 'toString' in ages1)
+console.log(ages1.hasOwnProperty('Boris'))
+console.log(ages1.hasOwnProperty('toString'))
+
+let ages =new Map();
+ages.set("Borris", 39);
+ages.set("Liang", 22);
+ages.set("Julia", 62);
+
+console.log(`julia is ${ages.get('Julia')}`)
+console.log('is borris age known?', ages.has('Borris'))
+console.log('is jack age known?', ages.has('Jack'))
+console.log('is jack age known?', ages.has('Jack'))
+console.log( ages.has('toString'))
+
+let sym = Symbol('name');
+console.log(sym == Symbol('name'));
+
+let num = 5;
+console.log(num == 5)
+
+const toStringSymbol = Symbol('toString');
+Array.prototype[toStringSymbol] = function() {
+    return `${this.length} cm of yarn`;
+};
+
+console.log([1,2].toString())
+console.log([1,2][toStringSymbol]());
+
+let okIterator = "OK"[Symbol.iterator]()
+console.log(okIterator.next())
+console.log(okIterator.next())
+console.log(okIterator.next())
+
+//page 115 exercise
+class Vec {
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+    }
+
+    plus(other) {
+        return new Vec(this.x + other.x, this.y + other.y);
+    }
+    minus(other) {
+        return new Vec(this.x - other.x, this.y -other.y);
+    }
+    get length() {
+        return Math.sqrt(this.x * this.x + this.y*this.y)
+    }
+}
+
+console.log(new Vec(1,2).plus(new Vec(2,3)))
+
+console.log(new Vec(1,2).minus(new Vec(2,3)))
+
+class Group {
+    constructor (){
+        this.members = [];
+    }
+
+    add(value) {
+        if(!this.has(value)) {
+            this.members.push(value);
+        }
+    }
+
+    delete(value) {
+    this.members = this.members.filter(v => v !== value)
+    }
+
+    has(value) {
+        return this.members.includes(value)
+    }
+
+}
+
+function promptDirection(question) {
+    let result = prompt(question);
+    if(result.toLowerCase()=="left") return "L";
+    if (result.toLowerCase() == "right") return "R";
+    throw newError("invaid diresction:" + result)
+}
+
+function look(){
+    if(promptDirection("which way?") == "L") {
+        return 'a house';
+    }else {
+        return 'two angry bears';
+    }
+}
+
+try {
+    console.log("you see", look());
+}catch (error) {
+    console.log('something went wrong:' + error )
+}
+
+const accounts = {
+    a:100,
+    b: 0,
+    c: 20
+};
+
+function getAccount() {
+    let accountName = prompt("enter an account name");
+    if(!accounts.hasOwnProperty(accountName)) {
+        throw new Error(`no such account: ${accountName}`)
+    }
+    return accountName
+}
+
+function transfer(from, amount) {
+    if (accounts[from] < amount) return;
+    accounts[from] -= amount;
+    accounts[getAccount()] += amount;
+}
+
+setTimeout( ()=> console.log("Ticks"), 500)
